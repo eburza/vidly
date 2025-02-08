@@ -1,4 +1,4 @@
-const generes = require('./generes')
+const genres = require('./genres')
 const validate = require('./validate')
 const express = require('express')
 const app = express()
@@ -10,26 +10,59 @@ app.get('/', (req, res) => {
     res.end()
 })
 
-app.get('/api/generes', (req, res) => {
-    res.send(generes)
+app.get('/api/genres', (req, res) => {
+    res.send(genres)
     res.end()
 })
 
-app.get('/api/generes/:id', (req, res) => {
-    const genere = generes.find( el => el.name === parseInt(req.params.name))
-    if (!genere) return res.status(404).send('Genere with that name was not found')
+app.get('/api/genres/:id', (req, res) => {
+    const genre = genres.find(el => el.id === parseInt(req.params.id))
+    if (!genre) return res.status(404).send('Genre with that name was not found')
     
-    res.send(genere)
+    res.send(genre)
 })
 
-app.post('/api/generes', (req, res) => {
-    const genere = {
-        id: generes.length + 1,
+//add new
+app.post('/api/genres', (req, res) => {
+    const { error } = validate(req.body)
+    if (error) {
+        res.status(400).send(error.details[0].message)
+        return
+    }
+
+    const genre = {
+        id: genres.length + 1,
         name: req.body.name
     }
 
-    generes.push(genere)
-    res.send(genere)
+    genres.push(genre)
+    res.send(genre)
+})
+
+//update
+app.put('/api/genres/:id', (req, res) => {
+    const genre = genres.find(el => el.id === parseInt(req.params.id))
+    if (!genre) return res.status(404).send('Genre with that name was not found')
+
+    const { error } = validate(req.body)
+    if (error) {
+        res.status(400).send(error.details[0].message)
+        return
+    }
+
+    genre.name = req.body.name
+    res.send(genre)
+})
+
+//delete
+app.delete('/api/genres/:id', (req, res) => {
+    const genre = genres.find(el => el.id === parseInt(req.params.id))
+    if (!genre) return res.status(404).send('Genre with that name was not found')
+
+    const index = genres.indexOf(genre)
+    genres.splice(index, 1)
+
+    res.send(genre)
 })
 
 //listen on a port

@@ -1,11 +1,11 @@
 const Joi = require('joi')
 
-function validateGenere(genere) {
-    const schema = {
-        name: Joi.string().min(3).require()
-    }
+function validateGenre(genre) {
+    const schema = Joi.object({
+        name: Joi.string().min(3).required()
+    })
 
-    return Joi.validate(genere, schema)
+    return schema.validate(genre)
 }
 
-module.exports = validateGenere
+module.exports = validateGenre
