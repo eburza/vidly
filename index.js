@@ -17,6 +17,10 @@ app.use(authenticator)
 app.use('/', home)
 app.use('/api/genres', genres)
 
+//templating engine
+app.set('view engine', 'pug')
+app.set('views', './views')
+
 //debug
 if (app.get('env') === 'development') {
     debug('Startup debugger enabled...')

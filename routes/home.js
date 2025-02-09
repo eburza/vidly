@@ -1,10 +1,9 @@
 const express = require('express')
-const router = express.Router()
+const router = express.Router() 
 
-//define route
+//define a route 
 router.get('/', (req, res) => {
-    res.send('Hello')
-    res.end()
-})
+    res.render('index', {title: 'Vidly', message: 'Welcome in Vidly'})
+}) 
 
 module.exports = router
