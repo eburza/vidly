@@ -12,9 +12,11 @@
   "license": "ISC",
   "dependencies": {
     "debug": "^4.4.0",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "joi": "^17.13.3",
     "mongoose": "^8.10.0",
+    "node-fetch": "^2.7.0",
     "nodemon": "^3.1.9",
     "pug": "^3.0.3",
     "underscore": "^1.13.7"
