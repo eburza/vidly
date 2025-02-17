@@ -1,8 +1,19 @@
-const movieGenres = [
-    {id: 1, name: 'horror'},
-    {id: 2, name: 'comedy'},
-    {id: 3, name: 'romance'},
-    {id: 4, name: 'drama'},
-]
+const movieDatabase = require('../api/movieDatabase');
 
-module.exports = movieGenres
+async function getMovieGenres() {
+    const movieGenres = await movieDatabase.getGenres();
+    return movieGenres;
+}
+
+async function run() {
+    try {
+        const movieGenres = await getMovieGenres();
+        console.log(movieGenres);
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+}
+
+run();
+
+module.exports = getMovieGenres
