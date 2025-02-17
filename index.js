@@ -3,6 +3,7 @@ const genres = require('./routes/genres')
 const logger = require('./middleware/logger')
 const authenticator = require('./middleware/authenticator')
 
+const { MongoClient } = require('mongodb');
 const debug = require('debug')('app:startup')
 const express = require('express')
 const app = express()
