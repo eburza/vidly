@@ -1,4 +1,4 @@
-const movieDatabase = require('../api/movieDatabase');
+const movieDatabase = require('../lib/movie-db');
 
 async function getMovieGenres() {
     const movieGenres = await movieDatabase.getGenres();

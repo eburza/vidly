@@ -1,12 +1,16 @@
-const home = require('./routes/home')
-const genres = require('./routes/genres')
-const logger = require('./middleware/logger')
-const authenticator = require('./middleware/authenticator')
-
-const { MongoClient } = require('mongodb');
-const debug = require('debug')('app:startup')
 const express = require('express')
 const app = express()
+const debug = require('debug')('app:startup')
+const { MongoClient } = require('mongodb');
+require('dotenv').config()
+
+//routes
+const home = require('./src/routes/home')
+const genres = require('./src/routes/genres')
+
+//middleware
+const logger = require('./src/middleware/logger')
+const authenticator = require('./src/middleware/authenticator')
 
 //middleware
 app.use(express.json())
@@ -17,10 +21,6 @@ app.use(authenticator)
 //routes
 app.use('/', home)
 app.use('/api/genres', genres)
-
-//templating engine
-app.set('view engine', 'pug')
-app.set('views', './views')
 
 //debug
 if (app.get('env') === 'development') {

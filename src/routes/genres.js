@@ -1,21 +1,25 @@
-const movieGenres = require('../data/movieGenres')
-const validate = require('../validation/validate')
+const movieGenres = require('../lib/movie-db')
+const validate = require('../utils/validation/validate')
 
 const express = require('express')
 const router = express.Router()
 
 //define route
 router.get('/', (req, res) => {
-    res.send(movieGenres)
-    res.end()
+    res.send('Genres list')
 })
 
-router.get('/:id', (req, res) => {
-    const genre = movieGenres.find(el => el.id === parseInt(req.params.id))
-    if (!genre) return res.status(404).send('Genre with that name was not found')
+// router.get('/', (req, res) => {
+//     res.send(movieGenres)
+//     res.end()
+// })
+
+// router.get('/:id', (req, res) => {
+//     const genre = movieGenres.find(el => el.id === parseInt(req.params.id))
+//     if (!genre) return res.status(404).send('Genre with that name was not found')
     
-    res.send(genre)
-})
+//     res.send(genre)
+// })
 
 //add new
 router.post('/', (req, res) => {

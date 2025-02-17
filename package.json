@@ -4,24 +4,35 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon server.ts",
+    "build": "next build",
+    "start": "node server.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "^22.13.4",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
     "debug": "^4.4.0",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "joi": "^17.13.3",
-    "mongoose": "^8.10.0",
+    "mongoose": "^8.10.1",
+    "next": "^15.1.7",
     "node-fetch": "^2.7.0",
     "nodemon": "^3.1.9",
     "pug": "^3.0.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3",
     "underscore": "^1.13.7"
   },
   "devDependencies": {
+    "@types/debug": "^4.1.12",
+    "@types/mongoose": "^5.11.97",
     "jshint": "^2.13.6"
   }
 }
